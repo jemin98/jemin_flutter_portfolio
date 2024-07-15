@@ -9,13 +9,13 @@
     </div>
     <div class=" d-flex" style="height: calc(100vh - 100px)">
       <div class="col-md-6 mt-4 ps-4">
-        <div @click="updateTaskStatus(currentImg)" class="d-flex justify-content-center align-items-center border border-1 rounded-3 p-4">
+        <div class="d-flex justify-content-center align-items-center border border-1 rounded-3 p-4">
           <div class="" style="height: 400px; width: 250px">
             <img class="" width="300" height="400" :src="currentImg" />
           </div>
         </div>
         <div class="row gap-3 justify-content-center p-0 m-0 mt-3">
-          <div v-for="item in currentData.listImgs" :key="item" @click="changeImg(item)"
+          <div v-for="(item,index) in currentData.listImgs" :key="index" @click="changeImg(item)"
             class="col-md-3 border border-1 p-2 rounded-3">
             <img class="w-100" :src="item" />
           </div>
@@ -157,22 +157,18 @@ const data = ref([{
 ])
 const route = useRoute()
 const router = useRouter()
-const index = route.params.index
+const index = <any>(route.params.index)
 const currentData = data.value[index]
-const currentImg = ref(currentData.listImgs[0])
+const currentImg = ref('https://img.freepik.com/photos-premium/beau-papillon-dans-nature_1003721-290.jpg?size=626&ext=jpg')
 const modalsContainerRef = ref()
 
-const changeImg = (item) => {
+const changeImg = (item:any) => {
   currentImg.value = item
 }
 
 const goBack = () => {
   router.back();
 };
-
-const updateTaskStatus = async (url) => {
-  modalsContainerRef.value.showView(url)
-}
 </script>
 
 <style>

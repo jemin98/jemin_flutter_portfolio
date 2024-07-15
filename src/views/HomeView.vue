@@ -4,7 +4,7 @@
       FLUTTER
     </div>
     <div class="bg-light row overflow-scroll p-0 m-0" style="height: calc(100vh - 100px)">
-      <div v-for="(item, index) in data" :key="item" class="col-md-4 h-400px p-4" role="button" @click="goAboutPage(index)">
+      <div v-for="(item, index) in data" :key="index" class="col-md-4 h-400px p-4" role="button" @click="goAboutPage(index)">
         <div  class="effect-parent position-relative d-flex justify-content-center">
           <img width="300" height="400" style="object-fit: fill;"
             :src="item.displayImg" />
@@ -22,7 +22,7 @@ import { useRoute, useRouter } from 'vue-router';
 const router = useRouter()
 
 
-const goAboutPage = (index) => {
+const goAboutPage = (index:any) => {
   router.push({
     name: 'about',
     params: {index: index}

@@ -10,7 +10,7 @@ const isField = ref(false)
 const imgUrl = ref()
 
 
-const showView = async (url) => {
+const showView = async (url:any) => {
     isField.value = true
     imgUrl.value = url
     console.log("ksdfjhkhfdsk")
